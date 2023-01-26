@@ -3,6 +3,8 @@ use std::time::{UNIX_EPOCH, SystemTime};
 use clap::Parser;
 use fern::colors::{ColoredLevelConfig, Color};
 
+mod serial;
+
 #[derive(Parser, Debug)]
 #[command(author, version, about, long_about = None)]
 struct CliArgs {
@@ -46,6 +48,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     }
 
 
-    
+
     Ok(())
 }
