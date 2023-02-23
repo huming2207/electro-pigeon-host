@@ -101,7 +101,6 @@ impl Encoder<Vec<u8>> for StatefulSlipCodec {
             }
         }
 
-
         dst.put_u8(SSLIP_END);
         Ok(())
     }

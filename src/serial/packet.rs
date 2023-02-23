@@ -63,7 +63,7 @@ pub struct LoraConfig {
     pub freq_hz: u32,
 }
 
-#[derive(Debug, PartialEq, Eq, Copy, Clone)]
+#[derive(Debug, PartialEq, Eq, Clone)]
 pub struct LoraTx {
     pub tx_pwr: u8,
     pub timeout_ms: u32,
@@ -74,7 +74,7 @@ pub struct LoraTx {
     pub buf: Vec<u8>,
 }
 
-#[derive(Debug, PartialEq, Eq, Copy, Clone)]
+#[derive(Debug, PartialEq, Eq, Clone)]
 pub struct LoraRx {
     pub pkt_rssi: u8,
     pub sig_rssi: u8,
