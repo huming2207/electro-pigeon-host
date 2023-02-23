@@ -11,6 +11,9 @@ pub enum SerialError {
     #[error("Packet is too short, only {0} bytes")]
     PacketTooShort(u32),
 
-    #[error(transparent)]
-    LowLevel(#[from] tokio_serial::Error)
+    #[error("Serial port error: {0}")]
+    Port(#[from] tokio_serial::Error),
+
+    #[error("I/O error: {0}")]
+    Io(#[from] std::io::Error)
 }
