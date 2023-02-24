@@ -1,4 +1,5 @@
 pub mod codec;
-pub mod protocol;
+pub mod uart;
 pub mod error;
 pub mod packet;
+pub mod protocol;
