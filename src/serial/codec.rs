@@ -105,3 +105,30 @@ impl Encoder<Vec<u8>> for StatefulSlipCodec {
         Ok(())
     }
 }
+
+pub(crate) fn slice_to_u16le(buf: &[u8]) -> u16 {
+    let arr: [u8; 2] = match buf.try_into() {
+        Ok(arr) => arr,
+        Err(_) => [0, 0],
+    };
+
+    u16::from_le_bytes(arr)
+}
+
+pub(crate) fn slice_to_u32le(buf: &[u8]) -> u32 {
+    let arr: [u8; 4] = match buf.try_into() {
+        Ok(arr) => arr,
+        Err(_) => [0, 0, 0, 0],
+    };
+
+    u32::from_le_bytes(arr)
+}
+
+pub(crate) fn slice_to_u64le(buf: &[u8]) -> u64 {
+    let arr: [u8; 8] = match buf.try_into() {
+        Ok(arr) => arr,
+        Err(_) => [0, 0, 0, 0, 0, 0, 0, 0],
+    };
+
+    u64::from_le_bytes(arr)
+}
