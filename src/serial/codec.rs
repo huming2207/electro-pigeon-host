@@ -76,13 +76,13 @@ impl Decoder for StatefulSlipCodec {
     }
 }
 
-impl Encoder<Vec<u8>> for StatefulSlipCodec {
+impl Encoder<&[u8]> for StatefulSlipCodec {
     type Error = io::Error;
 
-    fn encode(&mut self, item: Vec<u8>, dst: &mut BytesMut) -> Result<(), Self::Error> {
+    fn encode(&mut self, item: &[u8], dst: &mut BytesMut) -> Result<(), Self::Error> {
         dst.put_u8(SSLIP_START);
         for byte in item {
-            match byte {
+            match *byte {
                 SSLIP_ESC => {
                     dst.put_u8(SSLIP_ESC);
                     dst.put_u8(SSLIP_ESC_ESC);
@@ -96,7 +96,7 @@ impl Encoder<Vec<u8>> for StatefulSlipCodec {
                     dst.put_u8(SSLIP_ESC_END);
                 },
                 _ => {
-                    dst.put_u8(byte);
+                    dst.put_u8(*byte);
                 }
             }
         }
